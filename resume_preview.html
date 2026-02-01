@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Rahman Sayyad - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            color: #334155;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 8mm 15mm 12mm 15mm;
+            margin: 0 auto;
+            background: white;
+            box-sizing: border-box;
+            position: relative;
+        }
+        @media print {
+            body { background: white; }
+            .page { width: 100%; margin: 0; padding: 8mm 12mm; box-shadow: none; }
+            .no-print { display: none; }
+            
+            /* Prevent awkward breaks */
+            .job-entry { page-break-inside: avoid; }
+            .section-title { page-break-after: avoid; }
+            h1, .subtitle, .contact-info { page-break-inside: avoid; }
+        }
+        
+        /* Header */
+        header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            font-size: 11px;
+            color: #475569;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .contact-item svg {
+            width: 14px;
+            height: 14px;
+            color: #94a3b8;
+        }
+        .contact-info a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #475569;
+            letter-spacing: 0.8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: #cbd5e1;
+            margin-left: 12px;
+        }
+
+        /* Skills Table */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            border: none;
+        }
+        .skills-table td {
+            padding: 6px 0;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+        .skills-table tr:last-child td {
+            border-bottom: none;
+        }
+        .skill-category-cell {
+            width: 22%;
+            background-color: transparent;
+            font-size: 12px;
+            font-weight: 700;
+            color: #334155;
+            padding-right: 12px;
+            border-right: none;
+            white-space: normal;
+        }
+        .skill-list-cell {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* Experience */
+        .job-entry {
+            margin-bottom: 12px;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+        .role {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .date {
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+        }
+        .job-subheader {
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .location {
+            color: #94a3b8;
+            font-weight: 400;
+            font-size: 11px;
+        }
+        
+        /* Lists */
+        ul {
+            margin: 0;
+            padding-left: 14px;
+        }
+        li {
+            font-size: 12px;
+            color: #475569;
+            margin-bottom: 2px;
+            text-align: left;
+            line-height: 1.4;
+        }
+        li::marker {
+            color: #cbd5e1;
+        }
+
+        /* Helper */
+        .print-btn {
+            position: fixed;
+            top: 20px; right: 20px;
+            padding: 10px 20px;
+            background: #0f172a; color: white;
+            border: none; border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <button class="no-print print-btn" onclick="window.print()">Save as PDF</button>
+
+    <div class="page">
+        <header style="text-align: center; border-bottom: none; margin-bottom: 20px;">
+            <h1 style="font-size: 32px; margin-bottom: 8px; color: #0f172a;">Abdul Rahman Sayyad</h1>
+            <div class="subtitle" style="text-align: center; color: #1e40af; margin-bottom: 12px; font-weight: 600;">Senior DevOps Engineer</div>
+            
+            <div class="contact-info" style="justify-content: center; gap: 16px; font-size: 12px; color: #1e293b; font-weight: 500; display: flex; align-items: center; flex-wrap: wrap;">
+                <span style="display: flex; align-items: center; gap: 6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .57 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.81.57A2 2 0 0 1 22 16.92z"></path></svg>
+                    +91 91828 87461
+                </span>
+                
+                <a href="mailto:abdulrahmansayyad@gmail.com" style="display: flex; align-items: center; gap: 6px; color: #1e293b; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    abdulrahmansayyad@gmail.com
+                </a>
+
+                <a href="https://linkedin.com/in/abdulrahmansayyad" style="display: flex; align-items: center; gap: 6px; color: #1e293b; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+
+                <a href="https://github.com/AbdulRahmanSayyad" style="display: flex; align-items: center; gap: 6px; color: #1e293b; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    GitHub
+                </a>
+
+                <a href="https://abdulrahmansayyad.github.io/my-portfolio-build/" style="display: flex; align-items: center; gap: 6px; color: #1e293b; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Portfolio
+                </a>
+
+                <span style="display: flex; align-items: center; gap: 6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Hyderabad, India
+                </span>
+            </div>
+        </header>
+
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <div style="font-size: 13px; color: #334155; line-height: 1.6; text-align: justify;">
+                Senior DevOps Engineer with 5+ years of experience leading cloud transformations for Fintech, Telecom, HRMS, Healthcare and E-commerce giants. Expert in designing secure, scalable Multi-Cloud architectures (specializing in Azure) that strictly adhere to FinOps principles, reducing operational costs by 20%. Proven ability to bridge the gap between development and operations, delivering 99.99% uptime and forcing 100% compliance through automated governance and IaC best practices.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Technical Expertise</div>
+            <table class="skills-table">
+                <tr>
+                    <td class="skill-category-cell">Cloud & Infrastructure</td>
+                    <td class="skill-list-cell">Azure, AWS, Google Cloud (GCP), On-Prem</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">Version Control</td>
+                    <td class="skill-list-cell">Git, GitHub, GitLab, Bitbucket, Azure Repos, AWS CodeCommit, TFS</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">CI/CD & Artifacts</td>
+                    <td class="skill-list-cell">Azure DevOps, AWS CodePipeline, GitHub Actions, Jenkins, JFrog, Octopus Deploy, ArgoCD</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">IaC & Configuration</td>
+                    <td class="skill-list-cell">Terraform, Ansible, Bicep, ARM Templates, CloudFormation</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">Containerization</td>
+                    <td class="skill-list-cell">Kubernetes (K8s), AKS, EKS, GKE, Docker, Helm, Ingress Controllers</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">DevSecOps & Security</td>
+                    <td class="skill-list-cell">SonarQube, Trivy, Mend, Snyk, Azure Policy, RBAC, IAM</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">Observability</td>
+                    <td class="skill-list-cell">OpenTelemetry, Grafana, Prometheus, Azure App Insights, Splunk, CloudWatch</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">Scripting</td>
+                    <td class="skill-list-cell">Python, Groovy, PowerShell, Bash, Shell</td>
+                </tr>
+                <tr>
+                    <td class="skill-category-cell">Databases</td>
+                    <td class="skill-list-cell">Azure SQL, PostgreSQL, MySQL, MongoDB, Redis</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <div class="job-entry">
+                <div class="job-header">
+                    <span class="role">Senior DevOps Engineer</span>
+                    <span class="date">June 2025 – Present</span>
+                </div>
+                <div class="job-subheader">
+                    <span class="company">Keka HR</span> 
+                    <span class="location">Hyderabad, India</span>
+                </div>
+                <ul>
+                    <li>Led high-impact production releases, ensuring 99.99% uptime for zero downtime deployments.</li>
+                    <li>Designed resilient Azure infrastructure using Terraform IaC, reducing environment provisioning latency by 60%.</li>
+                    <li>Established enterprise-wide observability across Kubernetes clusters using OpenTelemetry and Grafana to reduce MTTD by 30%.</li>
+                    <li>Optimized Azure DevOps pipelines by introducing caching and centralized YAML templates, cutting build times by 40%.</li>
+                    <li>Reduced deployment lead times significantly through automated bottleneck detection and pipeline acceleration scripts.</li>
+                    <li>Drove cloud cost optimization by implementing Azure Automation for unused resource cleanup, reducing monthly spend by 20%.</li>
+                    <li>Managed critical incident response and 24/7 on-call support by integrating Zenduty, maintaining a 15-minute SLA.</li>
+                    <li>Improved operational efficiency through cross-functional troubleshooting, documentation, and technical mentoring.</li>
+                </ul>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-header">
+                    <span class="role">DevOps Engineer</span>
+                    <span class="date">Dec 2023 – May 2025</span>
+                </div>
+                <div class="job-subheader">
+                    <span class="company">CNN ITech Global Solutions</span>
+                    <span class="location">Hyderabad, India</span>
+                </div>
+                <ul>
+                    <li>Led mission-critical infrastructure recovery for a Banking client, codifying manual configurations using Infrastructure as Code.</li>
+                    <li>Eliminated manual bottleneck by enforcing 100% IaC (Terraform) governance via standardized CI/CD pipelines.</li>
+                    <li>Modernized legacy migration of 200+ Team Foundation Server (TFS) repositories to Azure DevOps.</li>                    <li>Automated multi-platform tasks using Shell and PowerShell scripting to streamline complex infrastructure management.</li>                    <li>Implemented DevSecOps for a major Australian Banking client, reducing security vulnerabilities by 60% via Static/Dynamic Application Security Testing (SAST/DAST).</li>
+                    <li>Coordinated global Release Management and Continuous Delivery (CD) efforts, supporting 50+ developers across multiple time zones.</li>
+                </ul>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-header">
+                    <span class="role">Associate DevOps Consultant</span>
+                    <span class="date">Jan 2022 – Nov 2023</span>
+                </div>
+                <div class="job-subheader">
+                    <span class="company">Celebal Technologies</span>
+                    <span class="location">Bangalore, India</span>
+                </div>
+                <ul>
+                    <li>Streamlined environment management by provisioning Dev/Test/Prod environments via Terraform scripts (80% reduction in setup time).</li>
+                    <li>Built CI/CD workflows in Azure DevOps, cutting release wait times by 50%.</li>
+                    <li>Constructed self-service Database-as-a-Service (DBaaS) deployments for PostgreSQL and MySQL clusters.</li>
+                    <li>Delivered end-to-end zero downtime website solutions on AKS via ArgoCD-led GitOps.</li>
+                    <li>Enhanced pipeline security and compliance by implementing Role-Based Access Control (RBAC), achieving 100% audit pass rate.</li>                    <li>Optimized development workflows through standardized branching strategies and comprehensive Azure IaC documentation.</li>                </ul>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-header">
+                    <span class="role">DevOps Support Engineer III</span>
+                    <span class="date">May 2021 – Jan 2022</span>
+                </div>
+                <div class="job-subheader">
+                    <span class="company">Amazon Development Center (DIO)</span>
+                    <span class="location">Bangalore, India</span>
+                </div>
+                <ul>
+                    <li>Collaborated on PD21 and Project Enfield, driving critical scaling activities for Data Path Gateway services.</li>
+                    <li>Developed new Apollo environments and Knowledge Base dashboards from scratch, minimizing manual configuration effort by 30%.</li>
+                    <li>Managed Change Management (MCM) for host updates, achieving a 100% compliance rating.</li>
+                    <li>Successfully supported the Graviton Migration initiative and Q4 Peak traffic events through proactive monitoring.</li>
+                </ul>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-header">
+                    <span class="role">DevOps Engineer (Freelance)</span>
+                    <span class="date">Nov 2019 – May 2021</span>
+                </div>
+                <div class="job-subheader">
+                    <span class="company">Upwork Global Inc.</span>
+                    <span class="location">Remote</span>
+                </div>
+                <ul>
+                    <li>Built CI/CD pipelines for early-stage startups using GitHub Actions and GitLab CI.</li>
+                    <li>Scripted server configuration and application deployment using Ansible and custom shell scripts.</li>
+                    <li>Administered hybrid cloud setups and container migrations (Docker), cutting infrastructure costs by 15% for SMB clients.</li>
+                    <li>Developed custom Nagios and Splunk monitoring solutions to ensure system health and observability.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Certifications</div>
+            <ul style="list-style-type: disc; padding-left: 18px; display: block;">
+                <li><strong>Microsoft Certified:</strong> DevOps Engineer Expert (AZ-400)</li>
+                <li><strong>Microsoft Certified:</strong> Azure Administrator Associate (AZ-104)</li>
+                <li><strong>Microsoft Certified:</strong> Azure Fundamentals (AZ-900)</li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="job-entry" style="margin-bottom: 0;">
+                <div class="job-header">
+                    <span class="role" style="font-weight: 700;">B.Tech Computer Science Engineering</span>
+                    <span class="date">2017 – 2021</span>
+                </div>
+                <div class="job-subheader" style="margin-bottom: 0;">
+                    <span class="company">Lovely Professional University</span>
+                    <span class="location">Phagwara, Punjab</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Languages</div>
+            <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 20px;">
+                <li><strong>English:</strong> Professional</li>
+                <li><strong>Hindi:</strong> Native</li>
+                <li><strong>Urdu:</strong> Native</li>
+                <li><strong>Telugu:</strong> Native</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
